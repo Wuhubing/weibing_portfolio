@@ -1,16 +1,18 @@
 import GitHubIcon from '@material-ui/icons/GitHub'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import { about } from '../../portfolio'
+import { Button } from "react-bootstrap";
 import './About.css'
 
 const About = () => {
   const {photo,name, role, description, resume, social } = about
-
+  const resumeFile =`${process.env.PUBLIC_URL}/Weibing_Wang_Resume.pdf`;
   return (
     <div className='about center'>
     {photo && (
-      <img height="450px" alt="Avatar placeholder" src={photo} style={{ marginBottom: '20px' }} />
-    )}
+  <img alt="Avatar placeholder" src={photo} className="about__photo" />
+)}
   
     {name && (
       <h1>
@@ -41,7 +43,6 @@ const About = () => {
                 <GitHubIcon />
               </a>
             )}
-
             {social.linkedin && (
               <a
                 href={social.linkedin}
@@ -50,6 +51,17 @@ const About = () => {
               >
                 <LinkedInIcon />
               </a>
+            )}{resume && (
+              <Button
+                
+                href={resumeFile}
+                
+                className="mt-3 d-flex align-items-center link--icon"
+              >
+                <InsertDriveFileIcon />
+                Download Resume
+              </Button>
+              
             )}
           </>
         )}

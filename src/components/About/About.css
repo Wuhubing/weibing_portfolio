@@ -15,7 +15,12 @@
   font-size: 1rem;
   max-width: 600px;
 }
-
+.about__photo {
+  width: 100%;
+  max-width: 450px; 
+  height: auto; 
+  margin-bottom: 20px;
+}
 .about__desc,
 .about__contact {
   margin-top: 2.4em;
@@ -33,5 +38,9 @@
   .app .about {
     align-items: flex-start;
     margin-top: 2em;
+  }
+
+  .about__photo {
+    max-width: 300px; /* Adjust image size for smaller screens */
   }
 }

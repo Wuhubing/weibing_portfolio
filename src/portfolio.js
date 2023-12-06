@@ -7,18 +7,18 @@ const header = {
 }
 
 const about = {
-  photo:aboutpic,
-  // all the properties are optional - can be left empty or deleted
+  photo: aboutpic,
   name: 'Weibing Wang',
-  role: 'Full stack developer',
+  role: 'Full Stack Developer',
   description:
-    'UW-Madison students',
+    "As a Computer Science and Mathematics major at the University of Wisconsin-Madison, I'm deeply involved in full-stack development, data analytics, and research. I'm proficient in Java, Python, C/C++, and web technologies, and have a passion for ethical software development and UI/UX design.",
   resume: '',
   social: {
     linkedin: 'https://www.linkedin.com/in/weibing-wang-w/',
     github: 'https://github.com/Wuhubing',
   },
 }
+
 
 const projects = [
   // projects can be added an removed
