@@ -3,7 +3,6 @@ import './Intro.css';
 
 const Intro = () => {
   const [highlightedKeywordIndex, setHighlightedKeywordIndex] = useState(0);
-
   const keywords = [
     { word: "Beijing", title: "Beijing", description: "My journey began in Beijing, a city rich in culture and history. I spent my time here through high school and it was the foundation of my life.", img: process.env.PUBLIC_URL + '/beijing.jpg' },
     { word: "UWMadison", title: "UW-Madison", description: "I continued my academic pursuit at UW-Madison, focusing on Computer Science and Mathematics.", img: process.env.PUBLIC_URL + '/uwmadison.jpg' },
@@ -13,12 +12,11 @@ const Intro = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setHighlightedKeywordIndex(prevIndex => (prevIndex + 1) % keywords.length);
-    }, 8000); // Change highlighted keyword every 3 seconds
+    }, 15000); // Change highlighted keyword every 15 seconds
 
     return () => clearInterval(interval);
   }, [keywords.length]);
 
-  // Handle mouse enter event
   const handleMouseEnter = (index) => {
     setHighlightedKeywordIndex(index);
   };
@@ -36,15 +34,13 @@ const Intro = () => {
       </div>
       <div className="intro__text">
         <h2>About Me</h2>
-        <p>
-  My journey began in <span className={`keyword ${highlightedKeywordIndex === 0 ? "highlighted" : ""}`} onMouseEnter={() => handleMouseEnter(0)}>Beijing</span>, where I first discovered my passion for technology amidst its rich history and modern innovations. 
-</p>
-<p>
-  This passion led me to <span className={`keyword ${highlightedKeywordIndex === 1 ? "highlighted" : ""}`} onMouseEnter={() => handleMouseEnter(1)}>UW-Madison</span>, where I delved deeper into Computer Science and Mathematics, embracing the challenges and opportunities of these fields.
-</p>
-<p>
-  Currently, my focus on <span className={`keyword ${highlightedKeywordIndex === 2 ? "highlighted" : ""}`} onMouseEnter={() => handleMouseEnter(2)}>CS & Math</span> is shaping my path towards solving complex problems and making meaningful contributions through technology.
-</p>
+        <p>My journey began in <span className={`keyword ${highlightedKeywordIndex === 0 ? "highlighted" : ""}`} onMouseEnter={() => handleMouseEnter(0)}>Beijing</span>, where I first discovered my passion for technology amidst its rich history and modern innovations.</p>
+        <p>This passion led me to <span className={`keyword ${highlightedKeywordIndex === 1 ? "highlighted" : ""}`} onMouseEnter={() => handleMouseEnter(1)}>UW-Madison</span>, where I delved deeper into Computer Science and Mathematics, embracing the challenges and opportunities of these fields.</p>
+        <p>Currently, my focus on <span className={`keyword ${highlightedKeywordIndex === 2 ? "highlighted" : ""}`} onMouseEnter={() => handleMouseEnter(2)}>CS & Math</span> is shaping my path towards solving complex problems and making meaningful contributions through technology.</p>
+        {/* 将下载简历的按钮移动到这里，确保它位于文字下方 */}
+        <div className="intro__resume-button">
+        <a href={`${process.env.PUBLIC_URL}/Weibing_Wang_Resume.pdf`} className="btn btn--outline" target="_blank" rel="noopener noreferrer">Download resume</a>
+        </div>
       </div>
     </div>
   );
