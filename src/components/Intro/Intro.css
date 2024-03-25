@@ -17,6 +17,7 @@
 
 /* 增加间隙 */
 .intro__card {
+  position: relative;
   margin-right: 2em;
   display: flex;
   flex-direction: column;
@@ -25,6 +26,22 @@
   box-sizing: border-box; /* 新增：确保边框和内边距包含在宽度和高度内 */
   transition: 0.3s;
   border-radius: 5px; /* Optional */
+}
+/* 为description中的所有<a>标签添加特定样式 */
+.intro__card p a {
+  color: #c0d6ed; /* 超链接颜色 */
+  text-decoration: none; /* 移除默认下划线 */
+  position: relative;
+}
+
+.intro__card p a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #acc9e9; /* 下划线颜色 */
+  bottom: -2px; /* 控制下划线与文字的距离 */
+  left: 0;
 }
 
 .intro__card img {
@@ -90,4 +107,21 @@
   background-color: transparent;
   bottom: -3px;
   left: 0;
+}
+.intro__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10; /* 确保箭头位于其他内容之上 */
+}
+
+.intro__arrow--left {
+  left: -25px; /* 根据需要调整，确保箭头位于卡片左边缘 */
+}
+
+.intro__arrow--right {
+  right: -25px; /* 根据需要调整，确保箭头位于卡片右边缘 */
 }
