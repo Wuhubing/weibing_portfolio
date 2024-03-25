@@ -1,73 +1,101 @@
-import GitHubIcon from '@material-ui/icons/GitHub'
-import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import React, { useEffect, useState, useMemo } from 'react';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
-import { about } from '../../portfolio'
-import { Button } from "react-bootstrap";
-import './About.css'
+import { about } from '../../portfolio';
+import './About.css';
 
 const About = () => {
-  const {photo,name, role, description, resume, social } = about
-  const resumeFile =`${process.env.PUBLIC_URL}/Weibing_Wang_Resume.pdf`;
+  const { photo, name, social } = about;
+
+  const roles = useMemo(() => ["Fullstack Developer", "Data Scientist", "UI/UX Designer", "UW-Madison Badger🦡", "Kabipara Lover"], []);
+  const [currentRole, setCurrentRole] = useState("");
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer;
+
+    if (isDeleting) {
+      timer = setTimeout(() => {
+        setCurrentRole((prev) => prev.slice(0, prev.length - 1));
+        setCharIndex((prev) => prev - 1);
+      }, 100);
+    } else {
+      timer = setTimeout(() => {
+        setCurrentRole(roles[roleIndex].slice(0, charIndex));
+        setCharIndex((prev) => prev + 1);
+      }, 150);
+    }
+
+    if (!isDeleting && charIndex === roles[roleIndex].length + 1) {
+      setTimeout(() => setIsDeleting(true), 2000);
+    }
+
+    if (isDeleting && charIndex === 0) {
+      setIsDeleting(false);
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [charIndex, roleIndex, roles, isDeleting]);
+
+  const renderRoleText = (role) => {
+    if (role.includes("UW-Madison Badger")) {
+      const parts = role.split(" ");
+      return (
+        <>
+          {parts.slice(0, -1).join(" ")} <span style={{ color: "#C5050C" }}>{parts.slice(-1)}</span>
+        </>
+      );
+    } else if (role === "Kabipara Lover") {
+      return (
+        <>
+          {role} ❤️
+        </>
+      );
+    }
+    return role;
+  };
+
   return (
     <div className='about center'>
-    {photo && (
-  <img alt="Avatar placeholder" src={photo} className="about__photo" />
-)}
-  
-    {name && (
-      <h1>
-        Hi, I am <span className='about__name'>{name}.</span>
-      </h1>
-    )}
-
-      {role && <h2 className='about__role'>A {role}.</h2>}
-      <p className='about__desc'>{description && description}</p>
-
-      <div className='about__contact center'>
-        {resume && (
-          <a href={resume}>
-            <span type='button' className='btn btn--outline'>
-              Resume
-            </span>
+      <div className="about__content">
+        <h1 className="about__hello">Hello</h1>
+        <h2 className='about__name'>I'm {name}</h2>
+        <h3 className='about__role'>As a {renderRoleText(currentRole)}</h3>
+        
+        <div className='about__contact center'>
+          <a href={`${process.env.PUBLIC_URL}/Weibing_Wang_Resume.pdf`} aria-label='resume' className='link link--icon' target="_blank" rel="noopener noreferrer">
+            <InsertDriveFileIcon />
           </a>
-        )}
-
-        {social && (
-          <>
-            {social.github && (
-              <a
-                href={social.github}
-                aria-label='github'
-                className='link link--icon'
-              >
-                <GitHubIcon />
-              </a>
-            )}
-            {social.linkedin && (
-              <a
-                href={social.linkedin}
-                aria-label='linkedin'
-                className='link link--icon'
-              >
-                <LinkedInIcon />
-              </a>
-            )}{resume && (
-              <Button
-                
-                href={resumeFile}
-                
-                className="mt-3 d-flex align-items-center link--icon"
-              >
-                <InsertDriveFileIcon />
-                Download Resume
-              </Button>
-              
-            )}
-          </>
-        )}
+          {social && (
+            <>
+              {social.github && (
+                <a href={social.github} aria-label='github' className='link link--icon'>
+                  <GitHubIcon />
+                </a>
+              )}
+              {social.linkedin && (
+                <a href={social.linkedin} aria-label='linkedin' className='link link--icon'>
+                  <LinkedInIcon />
+                </a>
+              )}
+            </>
+          )}
+        </div>
       </div>
+      {photo && (
+        <div className="about__photo-container">
+          <img alt="Avatar placeholder" src={photo} className="about__photo" />
+          <p className="about__photo-credit">
+            Photo by <a href="https://anyulianyu.com/" target="_blank" rel="noopener noreferrer">Anyu Li</a>
+          </p>
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

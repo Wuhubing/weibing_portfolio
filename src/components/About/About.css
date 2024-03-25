@@ -1,46 +1,74 @@
 .about {
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   margin-top: 3em;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.about__content, .about__photo-container {
+  flex-basis: 50%; /* 或其他根据内容调整的百分比 */
+}
+.about__photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.about__photo-credit a {
+  text-decoration: underline; /* 添加下划线 */
+  color: inherit; /* 可选：保持链接颜色与周围文本一致 */
 }
 
-.about__name {
-  color: var(--clr-primary);
+.about__photo-credit a:hover {
+  color: #b27aaf; /* 鼠标悬停时的颜色，可以根据你的设计调整 */
+}
+.about__photo {
+  max-width: 80%;
+  margin: 50px;
+}
+
+.about__photo-credit {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.8em;
+}
+.about__content {
+  flex: 1.2;
+  margin: 20px;
+}
+
+.about__name, .about__role {
+  margin: 0.5em 0;
 }
 
 .about__role {
-  margin-top: 1.2em;
+  display: inline-block; /* 允许光标动态跟随文本 */
+  white-space: nowrap;
+  border-right: .15em solid orange; /* 光标样式 */
+  animation: blink-cursor 0.75s step-end infinite;
 }
 
-.about__desc {
-  font-size: 1rem;
-  max-width: 600px;
-}
-.about__photo {
-  width: 100%;
-  max-width: 450px; 
-  height: auto; 
-  margin-bottom: 20px;
-}
-.about__desc,
-.about__contact {
-  margin-top: 2.4em;
+@keyframes blink-cursor {
+  from, to { border-color: transparent; }
+  50% { border-color: orange; }
 }
 
-.about .link--icon {
-  margin-right: 0.8em;
-}
-
-.about .btn--outline {
-  margin-right: 1em;
+.link--icon {
+  margin: 20px 10px;
 }
 
 @media (max-width: 600px) {
-  .app .about {
-    align-items: flex-start;
-    margin-top: 2em;
+  .about {
+    flex-direction: column;
+    max-width: 100%;
   }
 
-  .about__photo {
-    max-width: 300px; /* Adjust image size for smaller screens */
+  .about__photo, .about__content {
+    max-width: 100%;
+    flex-basis: auto;
   }
 }
