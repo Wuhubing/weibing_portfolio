@@ -3,7 +3,6 @@ import './Intro.css';
 
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'; // 左箭头图标
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'; // 右箭头图标
-import './Intro.css';
 const Intro = () => {
   const [highlightedKeywordIndex, setHighlightedKeywordIndex] = useState(0);
   const keywords = [
