@@ -1,17 +1,17 @@
-import { useContext, useState } from 'react'
+import { useContext, useState } from 'react';
 import Brightness2Icon from '@mui/icons-material/Brightness2';
 import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { ThemeContext } from '../../contexts/theme'
-import { projects, skills, contact } from '../../portfolio'
-import './Navbar.css'
+import { ThemeContext } from '../../contexts/theme';
+import { projects, skills, contact } from '../../portfolio';
+import './Navbar.css';
 
 const Navbar = () => {
-  const [{ themeName, toggleTheme }] = useContext(ThemeContext)
-  const [showNavList, setShowNavList] = useState(false)
+  const [{ themeName, toggleTheme }] = useContext(ThemeContext);
+  const [showNavList, setShowNavList] = useState(false);
 
-  const toggleNavList = () => setShowNavList(!showNavList)
+  const toggleNavList = () => setShowNavList(!showNavList);
 
   return (
     <nav className='center nav'>
@@ -30,7 +30,7 @@ const Navbar = () => {
             </a>
           </li>
         ) : null}
-  <li className='nav__list-item'>
+        <li className='nav__list-item'>
           <a href='#intro' onClick={toggleNavList} className='link link--nav'>
             About
           </a>
@@ -46,7 +46,6 @@ const Navbar = () => {
             </a>
           </li>
         ) : null}
-
         {contact.email ? (
           <li className='nav__list-item'>
             <a
@@ -58,6 +57,11 @@ const Navbar = () => {
             </a>
           </li>
         ) : null}
+        <li className='nav__list-item'>
+          <a href='#map' onClick={toggleNavList} className='link link--nav'>
+            Map
+          </a>
+        </li>
       </ul>
 
       <button
@@ -78,7 +82,7 @@ const Navbar = () => {
         {showNavList ? <CloseIcon /> : <MenuIcon />}
       </button>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

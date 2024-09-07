@@ -8,7 +8,7 @@ import './About.css';
 const About = () => {
   const { photo, name, social } = about;
 
-  const roles = useMemo(() => ["Fullstack Developer", "Data Scientist", "UI/UX Designer", "UW-Madison Badger🦡", "Kabipara Lover"], []);
+  const roles = useMemo(() => ["UW-Madison Badger🦡","Deep Learning Researcher", "Algorithm Engineer","Data Scientist", "UI/UX Designer"], []);
   const [currentRole, setCurrentRole] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
