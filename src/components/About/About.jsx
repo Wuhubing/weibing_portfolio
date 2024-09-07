@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import { about } from '../../portfolio';
 import './About.css';
 

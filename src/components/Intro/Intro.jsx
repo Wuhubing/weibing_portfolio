@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Intro.css';
 
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'; // 左箭头图标
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'; // 右箭头图标
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 const Intro = () => {
   const [highlightedKeywordIndex, setHighlightedKeywordIndex] = useState(0);
   const keywords = [

@@ -1,4 +1,4 @@
-import aboutpic from "./components/Access/mePhoto.jpg"
+import aboutpic from "./components/Access/mePhoto2.jpg"
 
 const header = {
   // all the properties are optional - can be left empty or deleted
