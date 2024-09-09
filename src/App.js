@@ -9,6 +9,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Contact from './components/Contact/Contact';
 import Map from './components/Map/Map';
 import Footer from './components/Footer/Footer';
+import Experience from './components/Experience/Experience';
 import './App.css';
 
 const App = () => {
@@ -21,7 +22,8 @@ const App = () => {
       <main>
         <About />
         <Intro />
-        <Projects />
+        <Experience />
+        {/* <Projects /> */}
         <Skills />
         <Contact />
         <Map />

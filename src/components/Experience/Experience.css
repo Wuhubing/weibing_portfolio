@@ -1,0 +1,118 @@
+.experience {
+    padding: 2em 0;
+    background-color: var(--clr-bg); /* 使用全局背景颜色变量 */
+}
+
+.experience.light {
+    --clr-border: #accce6;
+    --clr-shadow: #a7cbe8;
+    --clr-arrow: #75aadb;
+    --clr-icon-bg: #75aadb;
+    --clr-icon-fg: #ffffff;
+    --clr-line: #75aadb; /* 调整线条颜色 */
+    --clr-date-bg: #fcfcfc; /* light 模式下的日期背景颜色 */
+}
+
+.experience.dark {
+    --clr-border: #001f54; /* 深蓝色的边框 */
+    --clr-shadow: #001b44; /* 深蓝色阴影 */
+    --clr-arrow: #003366; /* 较深蓝的箭头颜色 */
+    --clr-icon-bg: #002d62; /* 图标背景的深蓝色 */
+    --clr-icon-fg: #ffffff; /* 图标前景的白色，保持对比度 */
+    --clr-line: #51667b; /* 深蓝色线条 */
+    --clr-date-bg: #3a405b; /* 日期背景的深蓝色 */
+}
+
+.experience-heading {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.vertical-timeline-element--work .vertical-timeline-element-title {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 0.5em; /* 增加标题和图片之间的间距 */
+}
+
+.vertical-timeline-element--work .vertical-timeline-element-subtitle {
+    font-size: 1em;
+    color: var(--clr-fg); /* 使用全局前景颜色变量 */
+    margin-bottom: 0.5em; /* 增加位置和描述之间的间距 */
+}
+
+.vertical-timeline-element-image {
+    margin-top: 0; /* 移除图片上方的间距 */
+    border-radius: 5px;
+}
+
+.vertical-timeline-element-icon {
+    z-index: 3; /* 确保图标在时间线之上 */
+}
+
+.vertical-timeline-element-date {
+    background-color: var(--clr-date-bg); /* 使用全局日期背景颜色变量 */
+    color: var(--clr-fg); /* 使用全局前景颜色变量 */
+}
+
+/* 增加线条和箭头的宽度 */
+.vertical-timeline::before {
+    background: var(--clr-line);
+    width: 4px; /* 增加线条宽度 */
+    top: 0; /* 确保线条从顶部开始 */
+    bottom: 0; /* 确保线条延伸到底部 */
+}
+
+.vertical-timeline-element-content::before {
+    border-right: 10px solid var(--clr-arrow); /* 增加箭头宽度 */
+}
+
+/* 新增时间线容器样式 */
+.vertical-timeline-container {
+    position: relative;
+    z-index: 1; /* 确保时间线容器在动画之上 */
+}
+
+.vertical-timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--clr-line);
+    transform: translateX(-50%);
+    z-index: 2; /* 确保时间线在动画之上 */
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em; /* 增加图片和位置之间的间距 */
+}
+
+.brand-container a {
+    margin-right: 1em; /* 调整图片和文字之间的间距 */
+    color: #0072ec; /* 超链接颜色 */
+    text-decoration: none; /* 移除默认下划线 */
+    position: relative;
+}
+
+.brand-container a:hover {
+    color: #005bb5; /* 悬停时的颜色 */
+}
+
+.vertical-timeline-element p {
+    font-weight: normal; /* 设置描述的字体粗细为正常 */
+    margin-top: 0.5em; /* 增加描述和位置之间的间距 */
+}
+
+/* 为experience中的所有<a>标签添加特定样式 */
+.vertical-timeline-element p a {
+    color: #0072ec; /* 超链接颜色 */
+    text-decoration: none; /* 移除默认下划线 */
+    position: relative;
+}
+
+.vertical-timeline-element p a:hover {
+    color: #005bb5; /* 悬停时的颜色 */
+}
