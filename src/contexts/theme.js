@@ -7,11 +7,18 @@ const ThemeProvider = ({ children }) => {
   const [themeName, setThemeName] = useState('light')
 
   useEffect(() => {
-    const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    setThemeName(darkMediaQuery.matches ? 'dark' : 'light')
-    darkMediaQuery.addEventListener('change', (e) => {
-      setThemeName(e.matches ? 'dark' : 'light')
-    });
+    // 检查 localStorage 中是否有主题设置
+    const savedTheme = localStorage.getItem('themeName')
+    if (savedTheme) {
+      setThemeName(savedTheme)
+    } else {
+      // 如果没有保存的主题，检查系统主题
+      const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+      setThemeName(darkMediaQuery.matches ? 'dark' : 'light')
+      darkMediaQuery.addEventListener('change', (e) => {
+        setThemeName(e.matches ? 'dark' : 'light')
+      })
+    }
   }, [])
 
   const toggleTheme = () => {

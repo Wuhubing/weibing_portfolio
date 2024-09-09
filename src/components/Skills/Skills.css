@@ -6,7 +6,6 @@
   margin-top: 10em;
 }
 
-
 /* 使所有标题居中 */
 .skills h1, .skills h2 {
   text-align: center;
@@ -43,6 +42,7 @@
   transform: translateY(-5px); /* 鼠标悬停时上移效果 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 鼠标悬停时的阴影效果 */
 }
+
 /* 调整Row和Col以确保内容居中 */
 .row {
   display: flex;
@@ -55,31 +55,50 @@
   display: flex;
   justify-content: center;
   padding: 5px;
-  margin: 0.5rem; /* 增加列之间的间距 */
+  margin: 0.5rem; /* 增加列之间的间隙 */
 }
 
 /* 技术图标的容器样式 */
-.tech-icons {
-  /* 设置透视距离，值越小3D效果越明显 */
-  perspective: 1000px;
-  /* 确保容器居中显示 */
-  display: flex;
-  justify-content: center;
+.techstack {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  justify-items: center;
   align-items: center;
 }
 
-/* 应用于Tilt组件内部的img元素 */
-.tech-icons img {
-  /* 平滑过渡效果，包括旋转和阴影 */
-  width: 500px;
+.techstack__item {
+  text-align: center;
+}
+
+.techstack__image {
+  width: 100px;
+  height: 100px;
   transition: transform 0.5s ease, box-shadow 0.3s ease;
-  /* 保持3D变换效果 */
   transform-style: preserve-3d;
 }
 
 /* 鼠标悬浮时的阴影效果，可选 */
-.tech-icons:hover img {
-  transform: scale(1.5);
+.techstack__item:hover .techstack__image {
+  transform: scale(1.4);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* 响应式布局调整 */
+@media (max-width: 1200px) {
+  .techstack {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .techstack {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .techstack {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

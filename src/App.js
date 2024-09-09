@@ -8,7 +8,7 @@ import Skills from './components/Skills/Skills';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Contact from './components/Contact/Contact';
 import Map from './components/Map/Map';
-// import Footer from './components/Footer/Footer';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
       </main>
 
       <ScrollToTop />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

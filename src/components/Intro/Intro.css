@@ -29,20 +29,11 @@
 }
 /* 为description中的所有<a>标签添加特定样式 */
 .intro__card p a {
-  color: #c0d6ed; /* 超链接颜色 */
+  color: #0072ec; /* 超链接颜色 */
   text-decoration: none; /* 移除默认下划线 */
   position: relative;
 }
 
-.intro__card p a::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: #acc9e9; /* 下划线颜色 */
-  bottom: -2px; /* 控制下划线与文字的距离 */
-  left: 0;
-}
 
 .intro__card img {
   width: 100%;
@@ -53,9 +44,28 @@
 }
 .intro__text {
   padding: 20px;
+  max-width: 1000px; /* 增加文本容器的最大宽度 */
+  margin: 0 auto; /* 居中对齐 */
 }
 
-/* 新增按钮样式，确保按钮位于文字下方 */
+/* 增加段落之间的间距 */
+.intro__text p {
+  margin-bottom: 2.5em;
+}
+
+/* 为intro__text中的所有<a>标签添加特定样式 */
+.intro__text a {
+  color: #0072ec; /* 超链接颜色 */
+  text-decoration: none; /* 移除默认下划线 */
+  position: relative;
+}
+
+
+
+.intro__text a:hover {
+  color: #005bb5; /* 悬停时的颜色 */
+}
+
 /* 新增按钮样式，确保按钮位于文字下方且不太大 */
 .intro__resume-button {
   justify-content: center;
