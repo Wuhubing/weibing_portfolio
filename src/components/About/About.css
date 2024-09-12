@@ -9,15 +9,18 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .about__content, .about__photo-container {
   flex-basis: 50%; /* 或其他根据内容调整的百分比 */
 }
+
 .about__photo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .about__photo-credit a {
   text-decoration: underline; /* 添加下划线 */
   color: inherit; /* 可选：保持链接颜色与周围文本一致 */
@@ -26,6 +29,7 @@
 .about__photo-credit a:hover {
   color: #b27aaf; /* 鼠标悬停时的颜色，可以根据你的设计调整 */
 }
+
 .about__photo {
   max-width: 80%;
   margin: 50px;
@@ -35,7 +39,11 @@
   text-align: center;
   margin-top: 10px;
   font-size: 0.8em;
+  font-style: italic; /* 斜体 */
+  font-family: 'Georgia', serif; /* 更艺术的字体 */
+  color: var(--clr-text); /* 使用主题相关的颜色变量 */
 }
+
 .about__content {
   flex: 1.2;
   margin: 20px;
@@ -50,6 +58,7 @@
   white-space: nowrap;
   border-right: .15em solid orange; /* 光标样式 */
   animation: blink-cursor 0.75s step-end infinite;
+  color: var(--clr-text); /* 使用主题相关的颜色变量 */
 }
 
 @keyframes blink-cursor {

@@ -81,7 +81,7 @@ const Experience = () => {
   const [{ themeName }] = useContext(ThemeContext);
 
   return (
-    <div className={`experience ${themeName}`}>
+    <div id="experience" className={`experience ${themeName}`}>
       <h1 className="experience-heading">EXPERIENCE</h1>
       <div className="vertical-timeline-container">
         <div className="vertical-timeline-line"></div>

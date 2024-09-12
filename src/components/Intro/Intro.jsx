@@ -36,9 +36,9 @@ const Intro = () => {
     return () => clearInterval(interval);
   }, [keywords.length]);
 
-  const handleMouseEnter = (index) => {
-    setHighlightedKeywordIndex(index);
-  };
+  // const handleMouseEnter = (index) => {
+  //   setHighlightedKeywordIndex(index);
+  // };
   const handlePrevClick = () => {
     setHighlightedKeywordIndex(prevIndex => (prevIndex - 1 + keywords.length) % keywords.length);
   };

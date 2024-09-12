@@ -2,9 +2,9 @@ import './Footer.css'
 
 const Footer = () => (
   <footer className='footer'>
-    <a className='footer__link'>
+    <button className='footer__link' onClick={() => window.location.href = 'https://www.linkedin.com/in/weibing-wang-w/'}>
       Weibing Wang all reserved @2024
-    </a>
+    </button>
   </footer>
 )
 

@@ -90,7 +90,7 @@ const About = () => {
         <div className="about__photo-container">
           <img alt="Avatar placeholder" src={photo} className="about__photo" />
           <p className="about__photo-credit">
-            Photo by <a href="https://anyulianyu.com/" target="_blank" rel="noopener noreferrer">Anyu Li</a>
+            <em>A serene afternoon at the Summer Palace, photo by <a href="https://anyulianyu.com/" target="_blank" rel="noopener noreferrer">Anyu Li</a></em>
           </p>
         </div>
       )}
