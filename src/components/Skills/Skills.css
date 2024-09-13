@@ -74,6 +74,7 @@
 .techstack__image {
   width: 100px;
   height: 100px;
+  object-fit: cover; /* 确保图片是正方形 */
   transition: transform 0.5s ease, box-shadow 0.3s ease;
   transform-style: preserve-3d;
 }
