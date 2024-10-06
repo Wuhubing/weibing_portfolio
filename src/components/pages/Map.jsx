@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import './Map.css';
+import '../../styles/Map.css';
 
 const Map = () => {
   useEffect(() => {

@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import './Intro.css';
-
+import '../../styles/Intro.css';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const Intro = () => {
-  const [highlightedKeywordIndex, setHighlightedKeywordIndex] = useState(0);
-  const keywords = [
+interface Keyword {
+  word: string;
+  title: string;
+  description: string;
+  img: string;
+  link?: string;
+}
+
+const Intro: React.FC = () => {
+  const [highlightedKeywordIndex, setHighlightedKeywordIndex] = useState<number>(0);
+  const keywords: Keyword[] = [
     { 
       word: "Beijing", 
       title: "Beijing", 
       description: "Growing up in this city, I spent my formative years from elementary through high school here. It was in <a href='https://en.wikipedia.org/wiki/Beijing' target='_blank' rel='noopener noreferrer'>Beijing</a> that I laid the foundation of my knowledge, preparing myself for future studies and exploration.", 
-      img: process.env.PUBLIC_URL + '/beijing.jpg' 
+      img: `${process.env.PUBLIC_URL}/beijing.jpg`
     },
     { 
       word: "UWMadison", 
       title: "UW-Madison", 
       description: "In 2021, I had the privilege of joining the Class of 2025 as a proud <a href='https://www.wisc.edu/' target='_blank' rel='noopener noreferrer'>Badger</a>. During my time here, I have been fortunate to work on research projects alongside esteemed scholars such as <a href='https://www.yuhangz.com/' target='_blank' rel='noopener noreferrer'>Yuhang Zhao</a> and <a href='https://pages.cs.wisc.edu/~ms/' target='_blank' rel='noopener noreferrer'>Meena</a>.", 
-      img: process.env.PUBLIC_URL + '/uwmadison.jpg' 
+      img: `${process.env.PUBLIC_URL}/uwmadison.jpg`
     }
-    // ,
-    // { 
-    //   word: "CS&Math", 
-    //   title: "CS & Math", 
-    //   description: "Delving into the realms of <a href='https://www.ams.org/' target='_blank' rel='noopener noreferrer'>Computer Science and Mathematics</a> has been a fascinating journey.", 
-    //   img: process.env.PUBLIC_URL + '/math&computersci.jpg' 
-    // }
   ];
 
   useEffect(() => {
@@ -36,9 +36,6 @@ const Intro = () => {
     return () => clearInterval(interval);
   }, [keywords.length]);
 
-  // const handleMouseEnter = (index) => {
-  //   setHighlightedKeywordIndex(index);
-  // };
   const handlePrevClick = () => {
     setHighlightedKeywordIndex(prevIndex => (prevIndex - 1 + keywords.length) % keywords.length);
   };

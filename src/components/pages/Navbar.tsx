@@ -1,22 +1,27 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Brightness2Icon from '@mui/icons-material/Brightness2';
 import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { ThemeContext } from '../../contexts/theme';
 import { projects, skills, contact } from '../../portfolio';
-import './Navbar.css';
+import '../../styles/Navbar.css';
 
-const Navbar = () => {
-  const [{ themeName, toggleTheme }] = useContext(ThemeContext);
-  const [showNavList, setShowNavList] = useState(false);
+interface ThemeContextType {
+  themeName: string;
+  toggleTheme: () => void;
+}
+
+const Navbar: React.FC = () => {
+  const [{ themeName, toggleTheme }] = useContext(ThemeContext) as [ThemeContextType];
+  const [showNavList, setShowNavList] = useState<boolean>(false);
 
   const toggleNavList = () => setShowNavList(!showNavList);
 
   return (
     <nav className='center nav'>
       <ul
-        style={{ display: showNavList ? 'flex' : null }}
+        style={{ display: showNavList ? 'flex' : undefined }}
         className='nav__list'
       >
         {projects.length ? (
@@ -69,7 +74,6 @@ const Navbar = () => {
         </li>
       </ul>
       
-
       <button
         type='button'
         onClick={toggleTheme}

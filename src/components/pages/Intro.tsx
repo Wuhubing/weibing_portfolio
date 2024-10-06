@@ -3,16 +3,29 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import { about } from '../../portfolio';
-import './About.css';
+import '../../styles/About.css';
 
-const About = () => {
-  const { photo, name, social } = about;
+// 定义 About 组件的 props 接口
+interface AboutProps {}
 
-  const roles = useMemo(() => ["UW-Madison Badger🦡","Deep Learning Researcher", "Algorithm Engineer","Data Scientist", "UI/UX Designer"], []);
-  const [currentRole, setCurrentRole] = useState("");
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+// 定义 about 对象的接口
+interface AboutData {
+  photo: string;
+  name: string;
+  social: {
+    github?: string;
+    linkedin?: string;
+  };
+}
+
+const About: React.FC<AboutProps> = () => {
+  const { photo, name, social } = about as AboutData;
+
+  const roles: string[] = useMemo(() => ["UW-Madison Badger🦡","Deep Learning Researcher", "Algorithm Engineer","Data Scientist", "UI/UX Designer"], []);
+  const [currentRole, setCurrentRole] = useState<string>("");
+  const [roleIndex, setRoleIndex] = useState<number>(0);
+  const [charIndex, setCharIndex] = useState<number>(0);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
   useEffect(() => {
     let timer;
@@ -41,7 +54,7 @@ const About = () => {
     return () => clearTimeout(timer);
   }, [charIndex, roleIndex, roles, isDeleting]);
 
-  const renderRoleText = (role) => {
+  const renderRoleText = (role: string): React.ReactNode => {
     if (role.includes("UW-Madison Badger")) {
       const parts = role.split(" ");
       return (
@@ -86,14 +99,16 @@ const About = () => {
           )}
         </div>
       </div>
-      {photo && (
-        <div className="about__photo-container">
-          <img alt="Avatar placeholder" src={photo} className="about__photo" />
-          <p className="about__photo-credit">
-            <em>A serene afternoon at the Summer Palace, photo by <a href="https://anyulianyu.com/" target="_blank" rel="noopener noreferrer">Anyu Li</a></em>
-          </p>
-        </div>
-      )}
+      <div className="about__photo-container">
+        <img 
+          alt="Weibing Wang" 
+          src={`${process.env.PUBLIC_URL}/mePhoto2.jpg`} 
+          className="about__photo" 
+        />
+        <p className="about__photo-credit">
+          <em>A serene afternoon at the Summer Palace, photo by <a href="https://anyulianyu.com/" target="_blank" rel="noopener noreferrer">Anyu Li</a></em>
+        </p>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+ 
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+ 
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+ 
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --ring: 215 20.2% 65.1%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+ 
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+ 
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+ 
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+ 
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+ 
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --ring: 216 34% 17%;
+ 
+    --radius: 0.5rem;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* About component styles */
+.about {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3em;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about__content, .about__photo-container {
+  flex-basis: 50%;
+}
+
+.about__photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about__photo-credit a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.about__photo-credit a:hover {
+  color: #b27aaf;
+}
+
+.about__photo {
+  max-width: 80%;
+  margin: 50px;
+}
+
+.about__photo-credit {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.8em;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  color: var(--foreground);
+}
+
+.about__content {
+  flex: 1.2;
+  margin: 20px;
+}
+
+.about__name, .about__role {
+  margin: 0.5em 0;
+}
+
+.about__role {
+  display: inline-block;
+  white-space: nowrap;
+  border-right: .15em solid orange;
+  animation: blink-cursor 0.75s step-end infinite;
+  color: var(--foreground);
+}
+
+@keyframes blink-cursor {
+  from, to { border-color: transparent; }
+  50% { border-color: orange; }
+}
+
+.link--icon {
+  margin: 20px 10px;
+}
+
+@media (max-width: 600px) {
+  .about {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .about__photo, .about__content {
+    max-width: 100%;
+    flex-basis: auto;
+  }
+}

@@ -3,7 +3,7 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 import 'react-vertical-timeline-component/style.min.css';
 import { MdWorkOutline } from 'react-icons/md';
 import { ThemeContext } from '../../contexts/theme';
-import './Experience.css';
+import '../../styles/Experience.css';
 
 const experiences = [
   {

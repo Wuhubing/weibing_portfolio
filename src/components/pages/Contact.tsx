@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { AiOutlineMail, AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
-import './Contact.css';
+import '../../styles/Contact.css';
 
-const Contact = () => {
+const Contact: React.FC = () => {
   return (
     <section className='section contact center' id='contact'>
       <Container className="contact_info">
