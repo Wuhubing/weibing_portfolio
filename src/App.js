@@ -3,7 +3,7 @@ import { ThemeContext } from './contexts/theme';
 import Header from './components/pages/Header';
 import About from './components/pages/About';
 import Intro from './components/pages/Intro'; 
-// import Projects from './components/pages/Projects';
+import Research from './components/pages/Research';
 import Skills from './components/pages/Skills';
 import ScrollToTop from './components/pages/ScrollToTop';
 import Contact from './components/pages/Contact';
@@ -20,11 +20,11 @@ function App() {
       <Header />
 
       <main>
-      <Intro />
-      <About />
-        <Skills />
+        <Intro />
+        <About />
         <Experience />
-        {/* <Projects /> */}
+        <Research />
+        <Skills />
         <Contact />
         <Map />
       </main>

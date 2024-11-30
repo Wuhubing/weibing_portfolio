@@ -24,17 +24,6 @@ const Navbar: React.FC = () => {
         style={{ display: showNavList ? 'flex' : undefined }}
         className='nav__list'
       >
-        {projects.length ? (
-          <li className='nav__list-item'>
-            <a
-              href='#projects'
-              onClick={toggleNavList}
-              className='link link--nav'
-            >
-              Projects
-            </a>
-          </li>
-        ) : null}
         <li className='nav__list-item'>
           <a href='#intro' onClick={toggleNavList} className='link link--nav'>
             About
@@ -43,6 +32,11 @@ const Navbar: React.FC = () => {
         <li className='nav__list-item'>
           <a href='#experience' onClick={toggleNavList} className='link link--nav'>
             Experience
+          </a>
+        </li>
+        <li className='nav__list-item'>
+          <a href='#research' onClick={toggleNavList} className='link link--nav'>
+            Papers
           </a>
         </li>
         {skills.length ? (

@@ -19,7 +19,7 @@ interface AboutData {
 }
 
 const About: React.FC<AboutProps> = () => {
-  const { photo, name, social } = about as AboutData;
+  const { name, social } = about as AboutData;
 
   const roles: string[] = useMemo(() => ["UW-Madison Badger🦡","Deep Learning Researcher", "Algorithm Engineer","Data Scientist", "UI/UX Designer"], []);
   const [currentRole, setCurrentRole] = useState<string>("");
@@ -28,13 +28,13 @@ const About: React.FC<AboutProps> = () => {
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
   useEffect(() => {
-    let timer;
+    let timer: NodeJS.Timeout | undefined;
 
     if (isDeleting) {
       timer = setTimeout(() => {
         setCurrentRole((prev) => prev.slice(0, prev.length - 1));
         setCharIndex((prev) => prev - 1);
-      }, 100);
+      }, 50);
     } else {
       timer = setTimeout(() => {
         setCurrentRole(roles[roleIndex].slice(0, charIndex));
@@ -51,7 +51,9 @@ const About: React.FC<AboutProps> = () => {
       setRoleIndex((prev) => (prev + 1) % roles.length);
     }
 
-    return () => clearTimeout(timer);
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, [charIndex, roleIndex, roles, isDeleting]);
 
   const renderRoleText = (role: string): React.ReactNode => {
