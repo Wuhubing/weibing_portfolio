@@ -1,9 +1,22 @@
 .research-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10em;
+  padding: 2em 0;
+  background-color: var(--clr-bg);
+}
+
+.research-section.light {
+  --card-bg: var(--clr-bg);
+  --card-border: var(--clr-border);
+  --card-shadow: var(--clr-shadow);
+  --text-primary: var(--clr-fg);
+  --text-secondary: var(--clr-fg-alt);
+}
+
+.research-section.dark {
+  --card-bg: var(--clr-bg);
+  --card-border: var(--clr-border);
+  --card-shadow: var(--clr-shadow);
+  --text-primary: var(--clr-fg);
+  --text-secondary: var(--clr-fg-alt);
 }
 
 .research-section h1 {

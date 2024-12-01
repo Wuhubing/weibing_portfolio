@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { styled } from '@mui/material/styles';
 import { 
   Card, CardHeader, CardMedia, CardContent, 
@@ -11,6 +11,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import ArticleIcon from '@mui/icons-material/Article';
 import '../../styles/Research.css';
+import { ThemeContext } from '../../contexts/theme';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -73,6 +74,7 @@ const researchProjects = [
 ];
 
 const Research: React.FC = () => {
+  const [{ themeName }] = useContext(ThemeContext);
   const [expandedId, setExpandedId] = React.useState<number | null>(null);
 
   const handleExpandClick = (index: number) => {
@@ -80,7 +82,7 @@ const Research: React.FC = () => {
   };
 
   return (
-    <section className="research-section" id="research">
+    <section className={`research-section ${themeName}`} id="research">
       <Container maxWidth="lg">
         <Typography 
           variant="h2" 
@@ -90,7 +92,8 @@ const Research: React.FC = () => {
           sx={{ 
             fontWeight: 700,
             mb: 4,
-            fontSize: { xs: '2rem', md: '2.5rem' }
+            fontSize: { xs: '2rem', md: '2.5rem' },
+            color: 'var(--text-primary)'
           }}
         >
           Papers
@@ -101,18 +104,19 @@ const Research: React.FC = () => {
             <Grid item xs={12} md={6} lg={4} key={index}>
               <Card 
                 sx={{ 
-                  height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   width: '100%',
                   maxWidth: 393,
                   margin: 'auto',
                   borderRadius: 2,
-                  boxShadow: 3,
-                  transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                  backgroundColor: 'var(--clr-bg-alt)',
+                  border: '1px solid var(--clr-border)',
+                  boxShadow: '4px 5px 4px 3px var(--clr-shadow)',
+                  transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, height 0.3s ease-in-out',
                   '&:hover': {
                     transform: 'translateY(-5px)',
-                    boxShadow: 6
+                    boxShadow: '6px 7px 6px 5px var(--clr-shadow)'
                   }
                 }}
               >
@@ -127,7 +131,8 @@ const Research: React.FC = () => {
                         overflow: 'hidden',
                         display: '-webkit-box',
                         WebkitLineClamp: 2,
-                        WebkitBoxOrient: 'vertical'
+                        WebkitBoxOrient: 'vertical',
+                        color: 'var(--clr-fg)'
                       }}
                     >
                       {project.title}
@@ -136,12 +141,12 @@ const Research: React.FC = () => {
                   subheader={
                     <Typography 
                       variant="subtitle2" 
-                      color="text.secondary"
                       sx={{
                         height: 24,
                         overflow: 'hidden',
                         whiteSpace: 'nowrap',
-                        textOverflow: 'ellipsis'
+                        textOverflow: 'ellipsis',
+                        color: 'var(--clr-fg-alt)'
                       }}
                     >
                       {project.advisor} • {project.period}
@@ -174,20 +179,20 @@ const Research: React.FC = () => {
                   sx={{ 
                     flexGrow: 1, 
                     pt: 2,
-                    height: 120,
-                    overflow: 'hidden'
+                    height: expandedId === index ? 'auto' : 120,
+                    overflow: expandedId === index ? 'visible' : 'hidden'
                   }}
                 >
                   <Typography 
                     variant="body2"
-                    color="text.secondary"
                     sx={{
-                      display: '-webkit-box',
+                      display: expandedId === index ? 'block' : '-webkit-box',
                       WebkitLineClamp: 3,
                       WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
+                      overflow: expandedId === index ? 'visible' : 'hidden',
                       textOverflow: 'ellipsis',
-                      lineHeight: 1.6
+                      lineHeight: 1.6,
+                      color: 'var(--clr-fg-alt)'
                     }}
                   >
                     {project.description}
@@ -196,8 +201,7 @@ const Research: React.FC = () => {
                 <CardActions 
                   disableSpacing 
                   sx={{ 
-                    borderTop: '1px solid',
-                    borderColor: 'divider',
+                    borderTop: '1px solid var(--clr-border)',
                     px: 2 
                   }}
                 >
@@ -250,8 +254,21 @@ const Research: React.FC = () => {
                   </ExpandMore>
                 </CardActions>
                 <Collapse in={expandedId === index} timeout="auto" unmountOnExit>
-                  <CardContent sx={{ pt: 0 }}>
-                    <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 600 }}>
+                  <CardContent 
+                    sx={{ 
+                      pt: 0,
+                      borderTop: '1px solid var(--clr-border)',
+                      mt: 2
+                    }}
+                  >
+                    <Typography 
+                      variant="subtitle1" 
+                      gutterBottom 
+                      sx={{ 
+                        fontWeight: 600,
+                        color: 'var(--clr-fg)'
+                      }}
+                    >
                       Highlights
                     </Typography>
                     <ul style={{ paddingLeft: '20px', margin: 0 }}>
@@ -261,7 +278,8 @@ const Research: React.FC = () => {
                             variant="body2" 
                             sx={{ 
                               mb: 1,
-                              lineHeight: 1.6
+                              lineHeight: 1.6,
+                              color: 'var(--clr-fg-alt)'
                             }}
                           >
                             {highlight}
