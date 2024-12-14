@@ -1,0 +1,27 @@
+.login-page {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.login-input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  font-family: inherit;
+}
+
+.login-input:focus {
+  outline: 2px solid #1976d2;
+  border-color: #1976d2;
+}
+
+.login-input::placeholder {
+  color: #666;
+} 

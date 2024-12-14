@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
@@ -27,34 +27,30 @@ const About: React.FC<AboutProps> = () => {
   const [charIndex, setCharIndex] = useState<number>(0);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
-  useEffect(() => {
-    let timer: NodeJS.Timeout | undefined;
-
+  const updateRole = useCallback(() => {
     if (isDeleting) {
-      timer = setTimeout(() => {
-        setCurrentRole((prev) => prev.slice(0, prev.length - 1));
-        setCharIndex((prev) => prev - 1);
-      }, 50);
+      setCurrentRole((prev) => prev.slice(0, prev.length - 1));
+      setCharIndex((prev) => prev - 1);
     } else {
-      timer = setTimeout(() => {
-        setCurrentRole(roles[roleIndex].slice(0, charIndex));
-        setCharIndex((prev) => prev + 1);
-      }, 150);
+      setCurrentRole(roles[roleIndex].slice(0, charIndex));
+      setCharIndex((prev) => prev + 1);
     }
+  }, [isDeleting, roles, roleIndex, charIndex]);
 
+  useEffect(() => {
+    let timer: number;
+    
     if (!isDeleting && charIndex === roles[roleIndex].length + 1) {
-      setTimeout(() => setIsDeleting(true), 2000);
-    }
-
-    if (isDeleting && charIndex === 0) {
+      timer = window.setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && charIndex === 0) {
       setIsDeleting(false);
       setRoleIndex((prev) => (prev + 1) % roles.length);
+    } else {
+      timer = window.setTimeout(updateRole, isDeleting ? 50 : 150);
     }
 
-    return () => {
-      if (timer) clearTimeout(timer);
-    };
-  }, [charIndex, roleIndex, roles, isDeleting]);
+    return () => window.clearTimeout(timer);
+  }, [charIndex, isDeleting, roleIndex, roles, updateRole]);
 
   const renderRoleText = (role: string): React.ReactNode => {
     if (role.includes("UW-Madison Badger")) {

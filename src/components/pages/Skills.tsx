@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import '../../styles/Skills.css';
 import { IconCloud } from '../IconCloud';  // 确保这个路径是正确的
 
@@ -62,9 +62,11 @@ const Skills: React.FC<SkillsProps> = () => {
             <h1>Skills</h1>
           </div>
         </div>
-        <div className="icon-cloud-container">
-          <IconCloud iconSlugs={slugs} />
-        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <div className="icon-cloud-container">
+            <IconCloud iconSlugs={slugs} />
+          </div>
+        </Suspense>
       </div>
     </section>
   );

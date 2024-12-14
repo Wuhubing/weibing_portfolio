@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { Container, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/Map.css';
 
 const Map: React.FC = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const existingScript = document.getElementById('clstr_globe');
     if (existingScript) {
@@ -15,6 +18,15 @@ const Map: React.FC = () => {
     script.src = '//clustrmaps.com/globe.js?d=mGThQdv4BwtkvQlgV2ZRAODFFPEjTAgMSd0rquONgtQ&w=250';
     script.async = true;
 
+    // 添加地球加载完成后的点击事件
+    script.onload = () => {
+      const globeContainer = document.getElementById('map-container');
+      if (globeContainer) {
+        globeContainer.style.cursor = 'pointer';
+        globeContainer.onclick = () => navigate('/auth');
+      }
+    };
+
     document.getElementById('map-container')?.appendChild(script);
 
     return () => {
@@ -23,7 +35,7 @@ const Map: React.FC = () => {
         script.remove();
       }
     };
-  }, []);
+  }, [navigate]);
 
   return (
     <section className='section map' id='map'>
@@ -49,8 +61,10 @@ const Map: React.FC = () => {
             justifyContent: 'center',
             alignItems: 'center',
             minHeight: '300px',
-            margin: '20px 0'
+            margin: '20px 0',
+            cursor: 'pointer' // 添加指针样式
           }}
+          title="Click to view visitor statistics" // 添加提示文本
         />
       </Container>
     </section>
