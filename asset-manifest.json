@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/weibing_portfolio/static/css/main.e6c13ad2.css",
+    "main.js": "/weibing_portfolio/static/js/main.1eb6ded2.js",
+    "static/media/selfie.jpg": "/weibing_portfolio/static/media/selfie.221d30aaf93b78661f4f.jpg",
+    "static/media/uw-logo.png": "/weibing_portfolio/static/media/uw-logo.d8061d875a0860959652.png",
+    "index.html": "/weibing_portfolio/index.html",
+    "main.e6c13ad2.css.map": "/weibing_portfolio/static/css/main.e6c13ad2.css.map",
+    "main.1eb6ded2.js.map": "/weibing_portfolio/static/js/main.1eb6ded2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.1eb6ded2.js"
+  ]
+}
